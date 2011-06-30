@@ -16,7 +16,7 @@ abstract class BaseGrantsForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
-      'body'            => new sfWidgetFormTextarea(),
+      'comment'         => new sfWidgetFormTextarea(),
       'collector_id'    => new sfWidgetFormInputText(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
       'organization_id' => new sfWidgetFormInputText(),
@@ -24,7 +24,7 @@ abstract class BaseGrantsForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'body'            => new sfValidatorString(array('required' => false)),
+      'comment'         => new sfValidatorString(array('required' => false)),
       'collector_id'    => new sfValidatorInteger(array('required' => false)),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),
       'organization_id' => new sfValidatorInteger(array('required' => false)),

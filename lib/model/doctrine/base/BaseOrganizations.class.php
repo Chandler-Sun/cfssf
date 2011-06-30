@@ -7,23 +7,29 @@
  * 
  * @property string $engName
  * @property string $chnName
- * @property clob $reviewercomment
+ * @property string $website
+ * @property enum $status
+ * @property clob $comment
  * @property integer $collector_id
  * @property integer $reviewer_id
  * @property Member $Member
  * 
- * @method string        getEngName()         Returns the current record's "engName" value
- * @method string        getChnName()         Returns the current record's "chnName" value
- * @method clob          getReviewercomment() Returns the current record's "reviewercomment" value
- * @method integer       getCollectorId()     Returns the current record's "collector_id" value
- * @method integer       getReviewerId()      Returns the current record's "reviewer_id" value
- * @method Member        getMember()          Returns the current record's "Member" value
- * @method Organizations setEngName()         Sets the current record's "engName" value
- * @method Organizations setChnName()         Sets the current record's "chnName" value
- * @method Organizations setReviewercomment() Sets the current record's "reviewercomment" value
- * @method Organizations setCollectorId()     Sets the current record's "collector_id" value
- * @method Organizations setReviewerId()      Sets the current record's "reviewer_id" value
- * @method Organizations setMember()          Sets the current record's "Member" value
+ * @method string        getEngName()      Returns the current record's "engName" value
+ * @method string        getChnName()      Returns the current record's "chnName" value
+ * @method string        getWebsite()      Returns the current record's "website" value
+ * @method enum          getStatus()       Returns the current record's "status" value
+ * @method clob          getComment()      Returns the current record's "comment" value
+ * @method integer       getCollectorId()  Returns the current record's "collector_id" value
+ * @method integer       getReviewerId()   Returns the current record's "reviewer_id" value
+ * @method Member        getMember()       Returns the current record's "Member" value
+ * @method Organizations setEngName()      Sets the current record's "engName" value
+ * @method Organizations setChnName()      Sets the current record's "chnName" value
+ * @method Organizations setWebsite()      Sets the current record's "website" value
+ * @method Organizations setStatus()       Sets the current record's "status" value
+ * @method Organizations setComment()      Sets the current record's "comment" value
+ * @method Organizations setCollectorId()  Sets the current record's "collector_id" value
+ * @method Organizations setReviewerId()   Sets the current record's "reviewer_id" value
+ * @method Organizations setMember()       Sets the current record's "Member" value
  * 
  * @package    cfssf
  * @subpackage model
@@ -43,7 +49,21 @@ abstract class BaseOrganizations extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
-        $this->hasColumn('reviewercomment', 'clob', null, array(
+        $this->hasColumn('website', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('status', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 0,
+              1 => 1,
+              2 => 2,
+             ),
+             'default' => 2,
+             ));
+        $this->hasColumn('comment', 'clob', null, array(
              'type' => 'clob',
              ));
         $this->hasColumn('collector_id', 'integer', null, array(

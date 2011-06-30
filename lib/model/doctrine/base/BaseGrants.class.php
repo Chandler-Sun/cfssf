@@ -9,18 +9,21 @@
  * @property integer $collector_id
  * @property integer $reviewer_id
  * @property integer $organization_id
+ * @property Organization $Organization
  * @property Member $Member
  * 
- * @method clob    getComment()         Returns the current record's "comment" value
- * @method integer getCollectorId()     Returns the current record's "collector_id" value
- * @method integer getReviewerId()      Returns the current record's "reviewer_id" value
- * @method integer getOrganizationId()  Returns the current record's "organization_id" value
- * @method Member  getMember()          Returns the current record's "Member" value
- * @method Grants  setComment()         Sets the current record's "comment" value
- * @method Grants  setCollectorId()     Sets the current record's "collector_id" value
- * @method Grants  setReviewerId()      Sets the current record's "reviewer_id" value
- * @method Grants  setOrganizationId()  Sets the current record's "organization_id" value
- * @method Grants  setMember()          Sets the current record's "Member" value
+ * @method clob         getComment()         Returns the current record's "comment" value
+ * @method integer      getCollectorId()     Returns the current record's "collector_id" value
+ * @method integer      getReviewerId()      Returns the current record's "reviewer_id" value
+ * @method integer      getOrganizationId()  Returns the current record's "organization_id" value
+ * @method Organization getOrganization()    Returns the current record's "Organization" value
+ * @method Member       getMember()          Returns the current record's "Member" value
+ * @method Grants       setComment()         Sets the current record's "comment" value
+ * @method Grants       setCollectorId()     Sets the current record's "collector_id" value
+ * @method Grants       setReviewerId()      Sets the current record's "reviewer_id" value
+ * @method Grants       setOrganizationId()  Sets the current record's "organization_id" value
+ * @method Grants       setOrganization()    Sets the current record's "Organization" value
+ * @method Grants       setMember()          Sets the current record's "Member" value
  * 
  * @package    cfssf
  * @subpackage model
@@ -49,6 +52,10 @@ abstract class BaseGrants extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Organization', array(
+             'local' => 'organization_id',
+             'foreign' => 'id'));
+
         $this->hasOne('Member', array(
              'local' => 'reviewer_id',
              'foreign' => 'id'));

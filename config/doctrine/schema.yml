@@ -3,7 +3,7 @@ Member:
     name: string(50)
     email: string(50)
 
-Organizations:
+Organization:
   actAs:
     Timestampable: ~
   columns:

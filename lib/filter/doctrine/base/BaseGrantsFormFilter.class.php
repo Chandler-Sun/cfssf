@@ -16,14 +16,14 @@ abstract class BaseGrantsFormFilter extends BaseFormFilterDoctrine
       'comment'         => new sfWidgetFormFilterInput(),
       'collector_id'    => new sfWidgetFormFilterInput(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
-      'organization_id' => new sfWidgetFormFilterInput(),
+      'organization_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'comment'         => new sfValidatorPass(array('required' => false)),
       'collector_id'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Member'), 'column' => 'id')),
-      'organization_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'organization_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('grants_filters[%s]');
@@ -47,7 +47,7 @@ abstract class BaseGrantsFormFilter extends BaseFormFilterDoctrine
       'comment'         => 'Text',
       'collector_id'    => 'Number',
       'reviewer_id'     => 'ForeignKey',
-      'organization_id' => 'Number',
+      'organization_id' => 'ForeignKey',
     );
   }
 }

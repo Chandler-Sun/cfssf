@@ -42,7 +42,7 @@ abstract class BaseMember extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Organizations as ReviewedOrganizations', array(
+        $this->hasMany('Organization as ReviewedOrganizations', array(
              'local' => 'id',
              'foreign' => 'reviewer_id'));
 

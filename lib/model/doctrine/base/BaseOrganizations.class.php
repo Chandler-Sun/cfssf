@@ -57,9 +57,9 @@ abstract class BaseOrganizations extends sfDoctrineRecord
              'type' => 'enum',
              'values' => 
              array(
-              0 => 0,
-              1 => 1,
-              2 => 2,
+              0 => 'To be reviewed',
+              1 => 'Reviewed',
+              2 => 'Complete',
              ),
              'default' => 2,
              ));

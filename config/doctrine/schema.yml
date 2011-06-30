@@ -48,3 +48,11 @@ Grants:
       local: reviewer_id
       foreign: id
       foreignAlias: ReviewedGrants
+AssetRecord:
+  columns:
+    year: integer
+    amount: integer
+GivingRecord:
+  columns:
+    year: integer
+    amount: integer

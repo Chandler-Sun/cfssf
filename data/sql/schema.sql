@@ -1,6 +1,8 @@
+CREATE TABLE asset_record (id BIGINT AUTO_INCREMENT, year BIGINT, amount BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE category (id BIGINT AUTO_INCREMENT, name VARCHAR(50), description TEXT, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE comment (id BIGINT AUTO_INCREMENT, body LONGTEXT, user_id BIGINT, content_id BIGINT, INDEX content_id_idx (content_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE content (id BIGINT AUTO_INCREMENT, title VARCHAR(255), body LONGTEXT, view_count BIGINT, recommend_level VARCHAR(255) DEFAULT '2', category_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX category_id_idx (category_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE giving_record (id BIGINT AUTO_INCREMENT, year BIGINT, amount BIGINT, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE grants (id BIGINT AUTO_INCREMENT, comment LONGTEXT, collector_id BIGINT, reviewer_id BIGINT, organization_id BIGINT, INDEX reviewer_id_idx (reviewer_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE member (id BIGINT AUTO_INCREMENT, name VARCHAR(50), email VARCHAR(50), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE organizations (id BIGINT AUTO_INCREMENT, engname VARCHAR(255), chnname VARCHAR(255), website VARCHAR(255), status VARCHAR(255) DEFAULT '2', comment LONGTEXT, collector_id BIGINT, reviewer_id BIGINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX reviewer_id_idx (reviewer_id), PRIMARY KEY(id)) ENGINE = INNODB;

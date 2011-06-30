@@ -12,7 +12,7 @@ Organizations:
     website: string(255)
     status:
       type: enum
-      values: [0,1,2]
+      values: ['To be reviewed','Reviewed' ,'Complete']
       default: 2
     comment: clob
     collector_id: integer

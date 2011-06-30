@@ -13,11 +13,10 @@ Organization:
     status:
       type: enum
       values: ['To be reviewed','Reviewed' ,'Complete']
-      default: 2
+      default: 'To be reviewer'
     comment: clob
     collector_id: integer
-    reviewer_id: integer
-    
+    reviewer_id: integer    
   relations:
     Member:
       local: collector_id
@@ -29,7 +28,7 @@ Organization:
       foreignAlias: ReviewedOrganizations
 
 
-Grants:
+TheGrants:
   columns:
     comment: clob
     collector_id: integer

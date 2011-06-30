@@ -46,7 +46,7 @@ abstract class BaseMember extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'reviewer_id'));
 
-        $this->hasMany('Grants as ReviewedGrants', array(
+        $this->hasMany('TheGrants as ReviewedGrants', array(
              'local' => 'id',
              'foreign' => 'reviewer_id'));
     }

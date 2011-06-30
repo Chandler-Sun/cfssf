@@ -64,7 +64,7 @@ abstract class BaseOrganization extends sfDoctrineRecord
               1 => 'Reviewed',
               2 => 'Complete',
              ),
-             'default' => 2,
+             'default' => 'To be reviewer',
              ));
         $this->hasColumn('comment', 'clob', null, array(
              'type' => 'clob',
@@ -84,7 +84,7 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'reviewer_id',
              'foreign' => 'id'));
 
-        $this->hasMany('Grants', array(
+        $this->hasMany('TheGrants as Grants', array(
              'local' => 'id',
              'foreign' => 'organization_id'));
 

@@ -3,7 +3,7 @@ User:
     name: string(50)
     email: string(50)
 
-Content:
+Organizations:
   actAs:
     Timestampable: ~
   columns:
@@ -19,7 +19,7 @@ Content:
     User:
       local: category_id
       foreign: id
-      foreignAlias: Contents
+      foreignAlias: Organizations
 
 Comment:
   columns:
@@ -27,7 +27,7 @@ Comment:
     user_id: integer
     content_id: integer
   relations:
-    Content:
+    Organizations:
       local: content_id
       foreign: id
       foreignAlias: Comments

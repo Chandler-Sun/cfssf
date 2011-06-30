@@ -13,13 +13,13 @@ abstract class BaseUserFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'        => new sfWidgetFormFilterInput(),
-      'description' => new sfWidgetFormFilterInput(),
+      'name'  => new sfWidgetFormFilterInput(),
+      'email' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'name'        => new sfValidatorPass(array('required' => false)),
-      'description' => new sfValidatorPass(array('required' => false)),
+      'name'  => new sfValidatorPass(array('required' => false)),
+      'email' => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('user_filters[%s]');
@@ -39,9 +39,9 @@ abstract class BaseUserFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'          => 'Number',
-      'name'        => 'Text',
-      'description' => 'Text',
+      'id'    => 'Number',
+      'name'  => 'Text',
+      'email' => 'Text',
     );
   }
 }

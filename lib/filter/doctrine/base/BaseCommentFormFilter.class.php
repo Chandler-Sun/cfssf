@@ -15,13 +15,13 @@ abstract class BaseCommentFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'body'       => new sfWidgetFormFilterInput(),
       'user_id'    => new sfWidgetFormFilterInput(),
-      'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'add_empty' => true)),
+      'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organizations'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'body'       => new sfValidatorPass(array('required' => false)),
       'user_id'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'content_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Content'), 'column' => 'id')),
+      'content_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organizations'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('comment_filters[%s]');

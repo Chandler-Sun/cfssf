@@ -18,14 +18,14 @@ abstract class BaseCommentForm extends BaseFormDoctrine
       'id'         => new sfWidgetFormInputHidden(),
       'body'       => new sfWidgetFormTextarea(),
       'user_id'    => new sfWidgetFormInputText(),
-      'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'add_empty' => true)),
+      'content_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organizations'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'body'       => new sfValidatorString(array('required' => false)),
       'user_id'    => new sfValidatorInteger(array('required' => false)),
-      'content_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Content'), 'required' => false)),
+      'content_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Organizations'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('comment[%s]');

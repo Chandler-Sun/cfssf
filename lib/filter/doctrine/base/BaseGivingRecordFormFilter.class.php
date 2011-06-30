@@ -13,13 +13,15 @@ abstract class BaseGivingRecordFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'year'   => new sfWidgetFormFilterInput(),
-      'amount' => new sfWidgetFormFilterInput(),
+      'year'            => new sfWidgetFormFilterInput(),
+      'amount'          => new sfWidgetFormFilterInput(),
+      'organization_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'year'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'amount' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'year'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'amount'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'organization_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('giving_record_filters[%s]');
@@ -39,9 +41,10 @@ abstract class BaseGivingRecordFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'     => 'Number',
-      'year'   => 'Number',
-      'amount' => 'Number',
+      'id'              => 'Number',
+      'year'            => 'Number',
+      'amount'          => 'Number',
+      'organization_id' => 'ForeignKey',
     );
   }
 }

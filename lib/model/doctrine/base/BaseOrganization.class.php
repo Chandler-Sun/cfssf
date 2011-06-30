@@ -15,27 +15,33 @@
  * @property Member $Member
  * @property Doctrine_Collection $GrantEvents
  * @property Doctrine_Collection $AssetRecords
+ * @property Doctrine_Collection $GivingRecords
+ * @property Doctrine_Collection $ContactPersons
  * 
- * @method string              getEngName()      Returns the current record's "engName" value
- * @method string              getChnName()      Returns the current record's "chnName" value
- * @method string              getWebsite()      Returns the current record's "website" value
- * @method enum                getStatus()       Returns the current record's "status" value
- * @method clob                getComment()      Returns the current record's "comment" value
- * @method integer             getCollectorId()  Returns the current record's "collector_id" value
- * @method integer             getReviewerId()   Returns the current record's "reviewer_id" value
- * @method Member              getMember()       Returns the current record's "Member" value
- * @method Doctrine_Collection getGrantEvents()  Returns the current record's "GrantEvents" collection
- * @method Doctrine_Collection getAssetRecords() Returns the current record's "AssetRecords" collection
- * @method Organization        setEngName()      Sets the current record's "engName" value
- * @method Organization        setChnName()      Sets the current record's "chnName" value
- * @method Organization        setWebsite()      Sets the current record's "website" value
- * @method Organization        setStatus()       Sets the current record's "status" value
- * @method Organization        setComment()      Sets the current record's "comment" value
- * @method Organization        setCollectorId()  Sets the current record's "collector_id" value
- * @method Organization        setReviewerId()   Sets the current record's "reviewer_id" value
- * @method Organization        setMember()       Sets the current record's "Member" value
- * @method Organization        setGrantEvents()  Sets the current record's "GrantEvents" collection
- * @method Organization        setAssetRecords() Sets the current record's "AssetRecords" collection
+ * @method string              getEngName()        Returns the current record's "engName" value
+ * @method string              getChnName()        Returns the current record's "chnName" value
+ * @method string              getWebsite()        Returns the current record's "website" value
+ * @method enum                getStatus()         Returns the current record's "status" value
+ * @method clob                getComment()        Returns the current record's "comment" value
+ * @method integer             getCollectorId()    Returns the current record's "collector_id" value
+ * @method integer             getReviewerId()     Returns the current record's "reviewer_id" value
+ * @method Member              getMember()         Returns the current record's "Member" value
+ * @method Doctrine_Collection getGrantEvents()    Returns the current record's "GrantEvents" collection
+ * @method Doctrine_Collection getAssetRecords()   Returns the current record's "AssetRecords" collection
+ * @method Doctrine_Collection getGivingRecords()  Returns the current record's "GivingRecords" collection
+ * @method Doctrine_Collection getContactPersons() Returns the current record's "ContactPersons" collection
+ * @method Organization        setEngName()        Sets the current record's "engName" value
+ * @method Organization        setChnName()        Sets the current record's "chnName" value
+ * @method Organization        setWebsite()        Sets the current record's "website" value
+ * @method Organization        setStatus()         Sets the current record's "status" value
+ * @method Organization        setComment()        Sets the current record's "comment" value
+ * @method Organization        setCollectorId()    Sets the current record's "collector_id" value
+ * @method Organization        setReviewerId()     Sets the current record's "reviewer_id" value
+ * @method Organization        setMember()         Sets the current record's "Member" value
+ * @method Organization        setGrantEvents()    Sets the current record's "GrantEvents" collection
+ * @method Organization        setAssetRecords()   Sets the current record's "AssetRecords" collection
+ * @method Organization        setGivingRecords()  Sets the current record's "GivingRecords" collection
+ * @method Organization        setContactPersons() Sets the current record's "ContactPersons" collection
  * 
  * @package    cfssf
  * @subpackage model
@@ -92,6 +98,14 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'foreign' => 'organization_id'));
 
         $this->hasMany('AssetRecord as AssetRecords', array(
+             'local' => 'id',
+             'foreign' => 'organization_id'));
+
+        $this->hasMany('GivingRecord as GivingRecords', array(
+             'local' => 'id',
+             'foreign' => 'organization_id'));
+
+        $this->hasMany('ContactPerson as ContactPersons', array(
              'local' => 'id',
              'foreign' => 'organization_id'));
 

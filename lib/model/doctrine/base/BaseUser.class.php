@@ -8,13 +8,16 @@
  * @property string $name
  * @property string $email
  * @property Doctrine_Collection $Organizations
+ * @property Doctrine_Collection $CollectedGrants
  * 
- * @method string              getName()          Returns the current record's "name" value
- * @method string              getEmail()         Returns the current record's "email" value
- * @method Doctrine_Collection getOrganizations() Returns the current record's "Organizations" collection
- * @method User                setName()          Sets the current record's "name" value
- * @method User                setEmail()         Sets the current record's "email" value
- * @method User                setOrganizations() Sets the current record's "Organizations" collection
+ * @method string              getName()            Returns the current record's "name" value
+ * @method string              getEmail()           Returns the current record's "email" value
+ * @method Doctrine_Collection getOrganizations()   Returns the current record's "Organizations" collection
+ * @method Doctrine_Collection getCollectedGrants() Returns the current record's "CollectedGrants" collection
+ * @method User                setName()            Sets the current record's "name" value
+ * @method User                setEmail()           Sets the current record's "email" value
+ * @method User                setOrganizations()   Sets the current record's "Organizations" collection
+ * @method User                setCollectedGrants() Sets the current record's "CollectedGrants" collection
  * 
  * @package    cfssf
  * @subpackage model
@@ -41,6 +44,10 @@ abstract class BaseUser extends sfDoctrineRecord
         parent::setUp();
         $this->hasMany('Organizations', array(
              'local' => 'id',
-             'foreign' => 'category_id'));
+             'foreign' => 'collector_id'));
+
+        $this->hasMany('Grants as CollectedGrants', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
     }
 }

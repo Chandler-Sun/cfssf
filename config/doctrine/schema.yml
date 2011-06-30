@@ -7,17 +7,12 @@ Organizations:
   actAs:
     Timestampable: ~
   columns:
-    title: string(255)
-    body: clob
-    view_count: integer
-    recommend_level:
-      type: enum
-      values: [0,1,2]
-      default: 2
-    category_id: integer
+    name: string(255)
+    reviewercomment: clob
+    collector_id: integer
   relations:
     User:
-      local: category_id
+      local: collector_id
       foreign: id
       foreignAlias: Organizations
 
@@ -27,8 +22,11 @@ Grants:
     user_id: integer
     organization_id: integer
   relations:
-    Organizations:
+    Organization:
       local: organization_id
       foreign: id
       foreignAlias: Grants
-
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: CollectedGrants

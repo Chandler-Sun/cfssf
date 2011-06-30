@@ -14,13 +14,15 @@ abstract class BaseGrantsFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'body'            => new sfWidgetFormFilterInput(),
-      'user_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
+      'collector_id'    => new sfWidgetFormFilterInput(),
+      'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
       'organization_id' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'body'            => new sfValidatorPass(array('required' => false)),
-      'user_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Member'), 'column' => 'id')),
+      'collector_id'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'reviewer_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Member'), 'column' => 'id')),
       'organization_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
@@ -43,7 +45,8 @@ abstract class BaseGrantsFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'              => 'Number',
       'body'            => 'Text',
-      'user_id'         => 'ForeignKey',
+      'collector_id'    => 'Number',
+      'reviewer_id'     => 'ForeignKey',
       'organization_id' => 'Number',
     );
   }

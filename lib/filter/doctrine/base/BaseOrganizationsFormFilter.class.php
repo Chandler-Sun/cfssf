@@ -13,7 +13,8 @@ abstract class BaseOrganizationsFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'            => new sfWidgetFormFilterInput(),
+      'engName'         => new sfWidgetFormFilterInput(),
+      'chnName'         => new sfWidgetFormFilterInput(),
       'reviewercomment' => new sfWidgetFormFilterInput(),
       'collector_id'    => new sfWidgetFormFilterInput(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
@@ -22,7 +23,8 @@ abstract class BaseOrganizationsFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
-      'name'            => new sfValidatorPass(array('required' => false)),
+      'engName'         => new sfValidatorPass(array('required' => false)),
+      'chnName'         => new sfValidatorPass(array('required' => false)),
       'reviewercomment' => new sfValidatorPass(array('required' => false)),
       'collector_id'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Member'), 'column' => 'id')),
@@ -48,7 +50,8 @@ abstract class BaseOrganizationsFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'              => 'Number',
-      'name'            => 'Text',
+      'engName'         => 'Text',
+      'chnName'         => 'Text',
       'reviewercomment' => 'Text',
       'collector_id'    => 'Number',
       'reviewer_id'     => 'ForeignKey',

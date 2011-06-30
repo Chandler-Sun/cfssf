@@ -16,7 +16,8 @@ abstract class BaseOrganizationsForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
-      'name'            => new sfWidgetFormInputText(),
+      'engName'         => new sfWidgetFormInputText(),
+      'chnName'         => new sfWidgetFormInputText(),
       'reviewercomment' => new sfWidgetFormTextarea(),
       'collector_id'    => new sfWidgetFormInputText(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
@@ -26,7 +27,8 @@ abstract class BaseOrganizationsForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'name'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'engName'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'chnName'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'reviewercomment' => new sfValidatorString(array('required' => false)),
       'collector_id'    => new sfValidatorInteger(array('required' => false)),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),

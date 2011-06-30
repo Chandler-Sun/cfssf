@@ -7,7 +7,8 @@ Organizations:
   actAs:
     Timestampable: ~
   columns:
-    name: string(255)
+    engName: string(255)
+    chnName: string(255)
     reviewercomment: clob
     collector_id: integer
     reviewer_id: integer

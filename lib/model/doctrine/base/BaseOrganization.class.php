@@ -13,7 +13,8 @@
  * @property integer $collector_id
  * @property integer $reviewer_id
  * @property Member $Member
- * @property Doctrine_Collection $Grants
+ * @property Doctrine_Collection $GrantEvents
+ * @property Doctrine_Collection $AssetRecords
  * 
  * @method string              getEngName()      Returns the current record's "engName" value
  * @method string              getChnName()      Returns the current record's "chnName" value
@@ -23,7 +24,8 @@
  * @method integer             getCollectorId()  Returns the current record's "collector_id" value
  * @method integer             getReviewerId()   Returns the current record's "reviewer_id" value
  * @method Member              getMember()       Returns the current record's "Member" value
- * @method Doctrine_Collection getGrants()       Returns the current record's "Grants" collection
+ * @method Doctrine_Collection getGrantEvents()  Returns the current record's "GrantEvents" collection
+ * @method Doctrine_Collection getAssetRecords() Returns the current record's "AssetRecords" collection
  * @method Organization        setEngName()      Sets the current record's "engName" value
  * @method Organization        setChnName()      Sets the current record's "chnName" value
  * @method Organization        setWebsite()      Sets the current record's "website" value
@@ -32,7 +34,8 @@
  * @method Organization        setCollectorId()  Sets the current record's "collector_id" value
  * @method Organization        setReviewerId()   Sets the current record's "reviewer_id" value
  * @method Organization        setMember()       Sets the current record's "Member" value
- * @method Organization        setGrants()       Sets the current record's "Grants" collection
+ * @method Organization        setGrantEvents()  Sets the current record's "GrantEvents" collection
+ * @method Organization        setAssetRecords() Sets the current record's "AssetRecords" collection
  * 
  * @package    cfssf
  * @subpackage model
@@ -84,7 +87,11 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'reviewer_id',
              'foreign' => 'id'));
 
-        $this->hasMany('TheGrants as Grants', array(
+        $this->hasMany('GrantEvent as GrantEvents', array(
+             'local' => 'id',
+             'foreign' => 'organization_id'));
+
+        $this->hasMany('AssetRecord as AssetRecords', array(
              'local' => 'id',
              'foreign' => 'organization_id'));
 

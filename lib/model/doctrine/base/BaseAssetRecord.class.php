@@ -7,11 +7,17 @@
  * 
  * @property integer $year
  * @property integer $amount
+ * @property integer $organization_id
+ * @property Organization $Organization
  * 
- * @method integer     getYear()   Returns the current record's "year" value
- * @method integer     getAmount() Returns the current record's "amount" value
- * @method AssetRecord setYear()   Sets the current record's "year" value
- * @method AssetRecord setAmount() Sets the current record's "amount" value
+ * @method integer      getYear()            Returns the current record's "year" value
+ * @method integer      getAmount()          Returns the current record's "amount" value
+ * @method integer      getOrganizationId()  Returns the current record's "organization_id" value
+ * @method Organization getOrganization()    Returns the current record's "Organization" value
+ * @method AssetRecord  setYear()            Sets the current record's "year" value
+ * @method AssetRecord  setAmount()          Sets the current record's "amount" value
+ * @method AssetRecord  setOrganizationId()  Sets the current record's "organization_id" value
+ * @method AssetRecord  setOrganization()    Sets the current record's "Organization" value
  * 
  * @package    cfssf
  * @subpackage model
@@ -29,11 +35,16 @@ abstract class BaseAssetRecord extends sfDoctrineRecord
         $this->hasColumn('amount', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('organization_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Organization', array(
+             'local' => 'organization_id',
+             'foreign' => 'id'));
     }
 }

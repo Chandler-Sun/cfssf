@@ -8,16 +8,16 @@
  * @property string $name
  * @property string $email
  * @property Doctrine_Collection $ReviewedOrganizations
- * @property Doctrine_Collection $ReviewedGrants
+ * @property Doctrine_Collection $ReviewedGrantEvents
  * 
  * @method string              getName()                  Returns the current record's "name" value
  * @method string              getEmail()                 Returns the current record's "email" value
  * @method Doctrine_Collection getReviewedOrganizations() Returns the current record's "ReviewedOrganizations" collection
- * @method Doctrine_Collection getReviewedGrants()        Returns the current record's "ReviewedGrants" collection
+ * @method Doctrine_Collection getReviewedGrantEvents()   Returns the current record's "ReviewedGrantEvents" collection
  * @method Member              setName()                  Sets the current record's "name" value
  * @method Member              setEmail()                 Sets the current record's "email" value
  * @method Member              setReviewedOrganizations() Sets the current record's "ReviewedOrganizations" collection
- * @method Member              setReviewedGrants()        Sets the current record's "ReviewedGrants" collection
+ * @method Member              setReviewedGrantEvents()   Sets the current record's "ReviewedGrantEvents" collection
  * 
  * @package    cfssf
  * @subpackage model
@@ -46,7 +46,7 @@ abstract class BaseMember extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'reviewer_id'));
 
-        $this->hasMany('TheGrants as ReviewedGrants', array(
+        $this->hasMany('GrantEvent as ReviewedGrantEvents', array(
              'local' => 'id',
              'foreign' => 'reviewer_id'));
     }

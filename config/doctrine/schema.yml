@@ -28,7 +28,7 @@ Organization:
       foreignAlias: ReviewedOrganizations
 
 
-TheGrants:
+GrantEvent:
   columns:
     comment: clob
     collector_id: integer
@@ -38,19 +38,25 @@ TheGrants:
     Organization:
       local: organization_id
       foreign: id
-      foreignAlias: Grants
+      foreignAlias: GrantEvents
     Member:
       local: collector_id
       foreign: id
-      foreignAlias: CollectedGrants
+      foreignAlias: CollectedGrantEvents
     Member:
       local: reviewer_id
       foreign: id
-      foreignAlias: ReviewedGrants
+      foreignAlias: ReviewedGrantEvents
 AssetRecord:
   columns:
     year: integer
     amount: integer
+    organization_id: integer
+  relations:
+    Organization:
+      local: organization_id
+      foreign: id
+      foreignAlias: AssetRecords
 GivingRecord:
   columns:
     year: integer

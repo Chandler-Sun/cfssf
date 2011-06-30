@@ -1,0 +1,34 @@
+User:
+  columns:
+    name: string(50)
+    email: string(50)
+
+Content:
+  actAs:
+    Timestampable: ~
+  columns:
+    title: string(255)
+    body: clob
+    view_count: integer
+    recommend_level:
+      type: enum
+      values: [0,1,2]
+      default: 2
+    category_id: integer
+  relations:
+    User:
+      local: category_id
+      foreign: id
+      foreignAlias: Contents
+
+Comment:
+  columns:
+    body: clob
+    user_id: integer
+    content_id: integer
+  relations:
+    Content:
+      local: content_id
+      foreign: id
+      foreignAlias: Comments
+

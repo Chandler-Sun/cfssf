@@ -21,14 +21,14 @@ Organizations:
       foreign: id
       foreignAlias: Organizations
 
-Comment:
+Grants:
   columns:
     body: clob
     user_id: integer
-    content_id: integer
+    organization_id: integer
   relations:
     Organizations:
-      local: content_id
+      local: organization_id
       foreign: id
-      foreignAlias: Comments
+      foreignAlias: Grants
 

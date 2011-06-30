@@ -1,4 +1,4 @@
-User:
+Member:
   columns:
     name: string(50)
     email: string(50)
@@ -10,11 +10,17 @@ Organizations:
     name: string(255)
     reviewercomment: clob
     collector_id: integer
+    reviewer_id: integer
   relations:
-    User:
+    Member:
       local: collector_id
       foreign: id
-      foreignAlias: Organizations
+      foreignAlias: CollectedOrganizations
+    Member:
+      local: reviewer_id
+      foreign: id
+      foreignAlias: ReviewedOrganizations
+
 
 Grants:
   columns:
@@ -26,7 +32,7 @@ Grants:
       local: organization_id
       foreign: id
       foreignAlias: Grants
-    User:
+    Member:
       local: user_id
       foreign: id
       foreignAlias: CollectedGrants

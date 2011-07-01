@@ -13,4 +13,5 @@ require_once dirname(__FILE__).'/../lib/organizationGeneratorHelper.class.php';
  */
 class organizationActions extends autoOrganizationActions
 {
+
 }

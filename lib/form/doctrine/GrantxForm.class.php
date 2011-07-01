@@ -12,5 +12,11 @@ class GrantxForm extends BaseGrantxForm
 {
   public function configure()
   {
+  	unset(
+      $this['created_at'], $this['updated_at'],$this['collector_id'],$this['reviewer_id']
+    );
+  	$this->widgetSchema['attachment'] = new sfWidgetFormInputFile(array(
+       'label' => 'Attachment',
+    ));
   }
 }

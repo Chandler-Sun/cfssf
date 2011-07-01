@@ -16,6 +16,8 @@ generator:
       fields:  ~
       list:    ~
       filter:  ~
-      form:    ~
+      form:
+        fields:
+         hide: [created_at]
       edit:    ~
       new:     ~

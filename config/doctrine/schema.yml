@@ -53,6 +53,7 @@ Grantx:
       type: enum
       values: ['Yearly','Biannual','Dependent on Funds','Ongoing','Other']
       notnull: true
+    attachment: blob
     comment: clob
     collector_id: integer
     reviewer_id: integer
@@ -61,7 +62,7 @@ Grantx:
     Organization:
       local: organization_id
       foreign: id
-      foreignAlias: GrantEvents
+      foreignAlias: Grants
     Member:
       local: collector_id
       foreign: id

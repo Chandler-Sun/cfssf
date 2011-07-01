@@ -12,5 +12,8 @@ class OrganizationForm extends BaseOrganizationForm
 {
   public function configure()
   {
+  	unset(
+      $this['created_at'], $this['updated_at'],$this['collector_id'],$this['reviewer_id']
+    );
   }
 }

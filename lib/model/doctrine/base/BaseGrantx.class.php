@@ -8,6 +8,7 @@
  * @property string $name
  * @property enum $status
  * @property enum $frequency
+ * @property blob $attachment
  * @property clob $comment
  * @property integer $collector_id
  * @property integer $reviewer_id
@@ -18,6 +19,7 @@
  * @method string       getName()            Returns the current record's "name" value
  * @method enum         getStatus()          Returns the current record's "status" value
  * @method enum         getFrequency()       Returns the current record's "frequency" value
+ * @method blob         getAttachment()      Returns the current record's "attachment" value
  * @method clob         getComment()         Returns the current record's "comment" value
  * @method integer      getCollectorId()     Returns the current record's "collector_id" value
  * @method integer      getReviewerId()      Returns the current record's "reviewer_id" value
@@ -27,6 +29,7 @@
  * @method Grantx       setName()            Sets the current record's "name" value
  * @method Grantx       setStatus()          Sets the current record's "status" value
  * @method Grantx       setFrequency()       Sets the current record's "frequency" value
+ * @method Grantx       setAttachment()      Sets the current record's "attachment" value
  * @method Grantx       setComment()         Sets the current record's "comment" value
  * @method Grantx       setCollectorId()     Sets the current record's "collector_id" value
  * @method Grantx       setReviewerId()      Sets the current record's "reviewer_id" value
@@ -71,6 +74,9 @@ abstract class BaseGrantx extends sfDoctrineRecord
               4 => 'Other',
              ),
              'notnull' => true,
+             ));
+        $this->hasColumn('attachment', 'blob', null, array(
+             'type' => 'blob',
              ));
         $this->hasColumn('comment', 'clob', null, array(
              'type' => 'clob',

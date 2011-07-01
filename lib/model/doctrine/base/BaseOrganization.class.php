@@ -13,7 +13,7 @@
  * @property integer $collector_id
  * @property integer $reviewer_id
  * @property Member $Member
- * @property Doctrine_Collection $GrantEvents
+ * @property Doctrine_Collection $Grants
  * @property Doctrine_Collection $AssetRecords
  * @property Doctrine_Collection $GivingRecords
  * @property Doctrine_Collection $ContactPersons
@@ -26,7 +26,7 @@
  * @method integer             getCollectorId()    Returns the current record's "collector_id" value
  * @method integer             getReviewerId()     Returns the current record's "reviewer_id" value
  * @method Member              getMember()         Returns the current record's "Member" value
- * @method Doctrine_Collection getGrantEvents()    Returns the current record's "GrantEvents" collection
+ * @method Doctrine_Collection getGrants()         Returns the current record's "Grants" collection
  * @method Doctrine_Collection getAssetRecords()   Returns the current record's "AssetRecords" collection
  * @method Doctrine_Collection getGivingRecords()  Returns the current record's "GivingRecords" collection
  * @method Doctrine_Collection getContactPersons() Returns the current record's "ContactPersons" collection
@@ -38,7 +38,7 @@
  * @method Organization        setCollectorId()    Sets the current record's "collector_id" value
  * @method Organization        setReviewerId()     Sets the current record's "reviewer_id" value
  * @method Organization        setMember()         Sets the current record's "Member" value
- * @method Organization        setGrantEvents()    Sets the current record's "GrantEvents" collection
+ * @method Organization        setGrants()         Sets the current record's "Grants" collection
  * @method Organization        setAssetRecords()   Sets the current record's "AssetRecords" collection
  * @method Organization        setGivingRecords()  Sets the current record's "GivingRecords" collection
  * @method Organization        setContactPersons() Sets the current record's "ContactPersons" collection
@@ -98,7 +98,7 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'reviewer_id',
              'foreign' => 'id'));
 
-        $this->hasMany('Grantx as GrantEvents', array(
+        $this->hasMany('Grantx as Grants', array(
              'local' => 'id',
              'foreign' => 'organization_id'));
 

@@ -18,5 +18,10 @@ class GrantxForm extends BaseGrantxForm
   	$this->widgetSchema['attachment'] = new sfWidgetFormInputFile(array(
        'label' => 'Attachment',
     ));
+    $this->validatorSchema['attachment'] = new sfValidatorFile(array(
+      'required'   => false,
+      'path'       => sfConfig::get('sf_upload_dir').'/grantx_attachments',
+      'max_size'   => 10000000,
+    ));
   }
 }

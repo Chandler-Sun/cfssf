@@ -1,3 +1,12 @@
+asset_record:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                AssetRecord
+    module:               asset_record
+    prefix_path:          /asset_record
+    column:               id
+    with_wildcard_routes: true
+
 grantx:
   class: sfDoctrineRouteCollection
   options:
@@ -40,7 +49,7 @@ member:
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: home, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

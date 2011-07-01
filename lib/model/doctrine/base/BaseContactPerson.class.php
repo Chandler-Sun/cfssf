@@ -40,6 +40,7 @@ abstract class BaseContactPerson extends sfDoctrineRecord
         $this->setTableName('contact_person');
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
+             'notnull' => true,
              'length' => 255,
              ));
         $this->hasColumn('title', 'string', 255, array(

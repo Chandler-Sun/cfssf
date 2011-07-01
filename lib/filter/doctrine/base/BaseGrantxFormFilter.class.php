@@ -13,6 +13,9 @@ abstract class BaseGrantxFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'name'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'status'          => new sfWidgetFormChoice(array('choices' => array('' => '', 'To be reviewed' => 'To be reviewed', 'Reviewed' => 'Reviewed', 'Complete' => 'Complete'))),
+      'frequency'       => new sfWidgetFormChoice(array('choices' => array('' => '', 'Yearly' => 'Yearly', 'Biannual' => 'Biannual', 'Dependent on Funds' => 'Dependent on Funds', 'Ongoing' => 'Ongoing', 'Other' => 'Other'))),
       'comment'         => new sfWidgetFormFilterInput(),
       'collector_id'    => new sfWidgetFormFilterInput(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
@@ -22,6 +25,9 @@ abstract class BaseGrantxFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'name'            => new sfValidatorPass(array('required' => false)),
+      'status'          => new sfValidatorChoice(array('required' => false, 'choices' => array('To be reviewed' => 'To be reviewed', 'Reviewed' => 'Reviewed', 'Complete' => 'Complete'))),
+      'frequency'       => new sfValidatorChoice(array('required' => false, 'choices' => array('Yearly' => 'Yearly', 'Biannual' => 'Biannual', 'Dependent on Funds' => 'Dependent on Funds', 'Ongoing' => 'Ongoing', 'Other' => 'Other'))),
       'comment'         => new sfValidatorPass(array('required' => false)),
       'collector_id'    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Member'), 'column' => 'id')),
@@ -48,6 +54,9 @@ abstract class BaseGrantxFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'              => 'Number',
+      'name'            => 'Text',
+      'status'          => 'Enum',
+      'frequency'       => 'Enum',
       'comment'         => 'Text',
       'collector_id'    => 'Number',
       'reviewer_id'     => 'ForeignKey',

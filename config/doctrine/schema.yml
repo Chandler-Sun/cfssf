@@ -8,15 +8,24 @@ Organization:
     Timestampable:
       onInsert: true
   columns:
-    engName: string(255)
-    chnName: string(255)    
-    website: string(255)
+    engName:
+      type: string(255) 
+      notnull: true
+      unique: true
+    chnName: 
+      type: string(255)    
+      unique: true
+    website:
+      type: string(255)
     status:
       type: enum
       values: ['To be reviewed','Reviewed' ,'Complete']
       default: 'To be reviewer'
+      notnull: true
     comment: clob
-    collector_id: integer
+    collector_id:
+      type: integer
+      notnull: true
     reviewer_id: integer    
   relations:
     Member:
@@ -32,6 +41,18 @@ Grantx:
   actAs:
     Timestampable: ~
   columns:
+    name:
+      type: string(255)
+      notnull: true
+    status:
+      type: enum
+      values: ['To be reviewed','Reviewed' ,'Complete']
+      default: 'To be reviewer'
+      notnull: true
+    frequency:
+      type: enum
+      values: ['Yearly','Biannual','Dependent on Funds','Ongoing','Other']
+      notnull: true
     comment: clob
     collector_id: integer
     reviewer_id: integer
@@ -74,7 +95,9 @@ GivingRecord:
 
 ContactPerson:
   columns:
-    name: string(255)
+    name:
+      type: string(255)
+      notnull: true
     title: string(255)
     email: string(255)
     address: string(255)

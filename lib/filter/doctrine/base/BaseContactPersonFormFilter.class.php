@@ -13,7 +13,7 @@ abstract class BaseContactPersonFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name'            => new sfWidgetFormFilterInput(),
+      'name'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'title'           => new sfWidgetFormFilterInput(),
       'email'           => new sfWidgetFormFilterInput(),
       'address'         => new sfWidgetFormFilterInput(),

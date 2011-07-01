@@ -13,12 +13,12 @@ abstract class BaseOrganizationFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'engName'      => new sfWidgetFormFilterInput(),
+      'engName'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'chnName'      => new sfWidgetFormFilterInput(),
       'website'      => new sfWidgetFormFilterInput(),
       'status'       => new sfWidgetFormChoice(array('choices' => array('' => '', 'To be reviewed' => 'To be reviewed', 'Reviewed' => 'Reviewed', 'Complete' => 'Complete'))),
       'comment'      => new sfWidgetFormFilterInput(),
-      'collector_id' => new sfWidgetFormFilterInput(),
+      'collector_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'reviewer_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
       'created_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'updated_at'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),

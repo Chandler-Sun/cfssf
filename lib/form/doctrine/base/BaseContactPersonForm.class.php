@@ -26,7 +26,7 @@ abstract class BaseContactPersonForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'name'            => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'name'            => new sfValidatorString(array('max_length' => 255)),
       'title'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'email'           => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'address'         => new sfValidatorString(array('max_length' => 255, 'required' => false)),

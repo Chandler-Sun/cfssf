@@ -55,10 +55,13 @@ abstract class BaseOrganization extends sfDoctrineRecord
         $this->setTableName('organization');
         $this->hasColumn('engName', 'string', 255, array(
              'type' => 'string',
+             'notnull' => true,
+             'unique' => true,
              'length' => 255,
              ));
         $this->hasColumn('chnName', 'string', 255, array(
              'type' => 'string',
+             'unique' => true,
              'length' => 255,
              ));
         $this->hasColumn('website', 'string', 255, array(
@@ -74,12 +77,14 @@ abstract class BaseOrganization extends sfDoctrineRecord
               2 => 'Complete',
              ),
              'default' => 'To be reviewer',
+             'notnull' => true,
              ));
         $this->hasColumn('comment', 'clob', null, array(
              'type' => 'clob',
              ));
         $this->hasColumn('collector_id', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
              ));
         $this->hasColumn('reviewer_id', 'integer', null, array(
              'type' => 'integer',

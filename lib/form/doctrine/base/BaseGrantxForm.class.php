@@ -16,12 +16,12 @@ abstract class BaseGrantxForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
+      'name'            => new sfWidgetFormInputText(),
+      'status'          => new sfWidgetFormChoice(array('choices' => array('To be reviewed' => 'To be reviewed', 'Reviewed' => 'Reviewed', 'Complete' => 'Complete'))),
+      'frequency'       => new sfWidgetFormChoice(array('choices' => array('Yearly' => 'Yearly', 'Biannual' => 'Biannual', 'Dependent on Funds' => 'Dependent on Funds', 'Ongoing' => 'Ongoing', 'Other' => 'Other'))),
       'comment'         => new sfWidgetFormTextarea(),
-      'collector_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
-
-
+      'collector_id'    => new sfWidgetFormInputText(),
       'reviewer_id'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
-
       'organization_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
       'created_at'      => new sfWidgetFormDateTime(),
       'updated_at'      => new sfWidgetFormDateTime(),
@@ -29,12 +29,12 @@ abstract class BaseGrantxForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'name'            => new sfValidatorString(array('max_length' => 255)),
+      'status'          => new sfValidatorChoice(array('choices' => array(0 => 'To be reviewed', 1 => 'Reviewed', 2 => 'Complete'), 'required' => false)),
+      'frequency'       => new sfValidatorChoice(array('choices' => array(0 => 'Yearly', 1 => 'Biannual', 2 => 'Dependent on Funds', 3 => 'Ongoing', 4 => 'Other'))),
       'comment'         => new sfValidatorString(array('required' => false)),
-      'collector_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),
-
-
+      'collector_id'    => new sfValidatorInteger(array('required' => false)),
       'reviewer_id'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),
-
       'organization_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'required' => false)),
       'created_at'      => new sfValidatorDateTime(),
       'updated_at'      => new sfValidatorDateTime(),

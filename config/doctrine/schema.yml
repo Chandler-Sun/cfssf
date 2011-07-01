@@ -5,7 +5,8 @@ Member:
 
 Organization:
   actAs:
-    Timestampable: ~
+    Timestampable:
+      onInsert: true
   columns:
     engName: string(255)
     chnName: string(255)    
@@ -27,8 +28,9 @@ Organization:
       foreign: id
       foreignAlias: ReviewedOrganizations
 
-
-GrantEvent:
+Grantx:
+  actAs:
+    Timestampable: ~
   columns:
     comment: clob
     collector_id: integer
@@ -47,6 +49,7 @@ GrantEvent:
       local: reviewer_id
       foreign: id
       foreignAlias: ReviewedGrantEvents
+
 AssetRecord:
   columns:
     year: integer
@@ -57,6 +60,7 @@ AssetRecord:
       local: organization_id
       foreign: id
       foreignAlias: AssetRecords
+
 GivingRecord:
   columns:
     year: integer
@@ -67,6 +71,7 @@ GivingRecord:
       local: organization_id
       foreign: id
       foreignAlias: GivingRecords
+
 ContactPerson:
   columns:
     name: string(255)

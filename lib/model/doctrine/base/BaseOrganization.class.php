@@ -93,7 +93,7 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'reviewer_id',
              'foreign' => 'id'));
 
-        $this->hasMany('GrantEvent as GrantEvents', array(
+        $this->hasMany('Grantx as GrantEvents', array(
              'local' => 'id',
              'foreign' => 'organization_id'));
 
@@ -109,7 +109,9 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'organization_id'));
 
-        $timestampable0 = new Doctrine_Template_Timestampable();
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             'onInsert' => true,
+             ));
         $this->actAs($timestampable0);
     }
 }

@@ -1,3 +1,12 @@
+grantx:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                grantx
+    module:               grantx
+    prefix_path:          /grantx
+    column:               id
+    with_wildcard_routes: true
+
 grant_event:
   class: sfDoctrineRouteCollection
   options:

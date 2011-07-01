@@ -21,8 +21,12 @@ abstract class BaseOrganizationForm extends BaseFormDoctrine
       'website'      => new sfWidgetFormInputText(),
       'status'       => new sfWidgetFormChoice(array('choices' => array('To be reviewed' => 'To be reviewed', 'Reviewed' => 'Reviewed', 'Complete' => 'Complete'))),
       'comment'      => new sfWidgetFormTextarea(),
-      'collector_id' => new sfWidgetFormInputText(),
+      'collector_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
+
+
+
       'reviewer_id'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'add_empty' => true)),
+
       'created_at'   => new sfWidgetFormDateTime(),
       'updated_at'   => new sfWidgetFormDateTime(),
     ));
@@ -34,7 +38,7 @@ abstract class BaseOrganizationForm extends BaseFormDoctrine
       'website'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'status'       => new sfValidatorChoice(array('choices' => array(0 => 'To be reviewed', 1 => 'Reviewed', 2 => 'Complete'), 'required' => false)),
       'comment'      => new sfValidatorString(array('required' => false)),
-      'collector_id' => new sfValidatorInteger(array('required' => false)),
+      'collector_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),
       'reviewer_id'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Member'), 'required' => false)),
       'created_at'   => new sfValidatorDateTime(),
       'updated_at'   => new sfValidatorDateTime(),

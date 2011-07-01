@@ -1,13 +1,13 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           GrantEvent
+    model_class:           grantx
     theme:                 admin
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          grant_event
+    route_prefix:          grantx
     with_doctrine_route:   true
     actions_base_class:    sfActions
 

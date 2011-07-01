@@ -1,3 +1,30 @@
+grant_event:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                GrantEvent
+    module:               grant_event
+    prefix_path:          /grant_event
+    column:               id
+    with_wildcard_routes: true
+
+organization:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Organization
+    module:               organization
+    prefix_path:          /organization
+    column:               id
+    with_wildcard_routes: true
+
+member:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Member
+    module:               member
+    prefix_path:          /member
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

@@ -60,7 +60,7 @@ abstract class BaseGrantx extends sfDoctrineRecord
               1 => 'Reviewed',
               2 => 'Complete',
              ),
-             'default' => 'To be reviewer',
+             'default' => 'To be reviewed',
              'notnull' => true,
              ));
         $this->hasColumn('frequency', 'enum', null, array(

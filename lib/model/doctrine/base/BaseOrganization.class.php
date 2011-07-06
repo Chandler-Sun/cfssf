@@ -56,12 +56,10 @@ abstract class BaseOrganization extends sfDoctrineRecord
         $this->hasColumn('engName', 'string', 255, array(
              'type' => 'string',
              'notnull' => true,
-             'unique' => true,
              'length' => 255,
              ));
         $this->hasColumn('chnName', 'string', 255, array(
              'type' => 'string',
-             'unique' => true,
              'length' => 255,
              ));
         $this->hasColumn('website', 'string', 255, array(
@@ -114,9 +112,7 @@ abstract class BaseOrganization extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'organization_id'));
 
-        $timestampable0 = new Doctrine_Template_Timestampable(array(
-             'onInsert' => true,
-             ));
+        $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }
 }

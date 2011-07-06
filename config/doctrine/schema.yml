@@ -5,16 +5,13 @@ Member:
 
 Organization:
   actAs:
-    Timestampable:
-      onInsert: true
+    Timestampable: ~
   columns:
     engName:
       type: string(255) 
       notnull: true
-      unique: true
     chnName: 
       type: string(255)    
-      unique: true
     website:
       type: string(255)
     status:
@@ -47,7 +44,7 @@ Grantx:
     status:
       type: enum
       values: ['To be reviewed','Reviewed' ,'Complete']
-      default: 'To be reviewer'
+      default: 'To be reviewed'
       notnull: true
     frequency:
       type: enum

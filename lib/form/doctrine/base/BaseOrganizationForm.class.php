@@ -40,13 +40,6 @@ abstract class BaseOrganizationForm extends BaseFormDoctrine
       'updated_at'   => new sfValidatorDateTime(),
     ));
 
-    $this->validatorSchema->setPostValidator(
-      new sfValidatorAnd(array(
-        new sfValidatorDoctrineUnique(array('model' => 'Organization', 'column' => array('engName'))),
-        new sfValidatorDoctrineUnique(array('model' => 'Organization', 'column' => array('chnName'))),
-      ))
-    );
-
     $this->widgetSchema->setNameFormat('organization[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

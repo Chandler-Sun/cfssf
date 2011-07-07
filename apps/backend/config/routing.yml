@@ -1,3 +1,12 @@
+contact_person:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ContactPerson
+    module:               contact_person
+    prefix_path:          /contact_person
+    column:               id
+    with_wildcard_routes: true
+
 asset_record:
   class: sfDoctrineRouteCollection
   options:

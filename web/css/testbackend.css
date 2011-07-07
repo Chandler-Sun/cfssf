@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+h1
+{
+margin-bottom:0;
+}
+#container
+{
+  width:1200px
+}
+
+#header
+{
+  background-color:#FFA500;
+}
+
+#mainmenu
+{
+  background-color:#FFA500;
+}
+
+#leftmenu
+{
+  background-color:#FFD700;
+  width:200px;
+  float:left;
+}
+
+#rightmenu
+{
+  background-color:#FFD700;
+  width:200px;
+  float:left;	
+}
+#content
+{
+  background-color:#EEEEEE;
+  width:800px;
+  float:left;
+}
+
+#footer
+{
+  background-color:#FFA500;
+  clear:both;
+  text-align:center;
+}

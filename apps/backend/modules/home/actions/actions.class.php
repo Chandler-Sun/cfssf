@@ -19,4 +19,21 @@ class homeActions extends sfActions
   {
     //$this->forward('default', 'module');
   }
+  public function executeNews(sfWebRequest $request)
+  {
+    //$this->forward('default', 'module');
+  }
+  public function executeSearch(sfWebRequest $request)
+  {
+    $this->form = new sfForm();
+    $this->form->setWidgets(array(
+      'field' => new sfWidgetFormChoice(array('choices' => array('Organization Name', 'id'))),
+      'Keyword' => new sfWidgetFormInputText(),
+    ));
+    if ($request->isMethod('post'))
+    {
+        $this->redirect('/');
+    }
+  }
+
 }

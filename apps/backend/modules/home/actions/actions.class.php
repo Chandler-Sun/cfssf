@@ -32,7 +32,8 @@ class homeActions extends sfActions
     ));
     if ($request->isMethod('post'))
     {
-        $this->redirect('/');
+
+        return 'Result';
     }
   }
 

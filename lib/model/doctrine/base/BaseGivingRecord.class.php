@@ -45,6 +45,7 @@ abstract class BaseGivingRecord extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Organization', array(
              'local' => 'organization_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

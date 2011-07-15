@@ -14,8 +14,11 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:
+        title: Grant List
+        display: [id, =name, status, organization_id, collector_id, reviewer_id]
+      filter:
+        display: [id, name, status, organization_id, collector_id, reviewer_id]        
       form:    ~
       edit:    ~
       new:     ~

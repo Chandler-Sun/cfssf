@@ -14,8 +14,10 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:
+        display: [id, =eng_name, =chn_name, status, collector_id, reviewer_id]
+      filter:
+        display: [id, eng_name, chn_name, status, collector_id, reviewer_id]
       form:
         fields:
          hide: [created_at]

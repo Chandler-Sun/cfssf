@@ -7,10 +7,10 @@ Organization:
   actAs:
     Timestampable: ~
   columns:
-    engName:
+    eng_name:
       type: string(255) 
       notnull: true
-    chnName: 
+    chn_name: 
       type: string(255)    
     website:
       type: string(255)
@@ -23,17 +23,22 @@ Organization:
     collector_id:
       type: integer
       notnull: true
-    reviewer_id: integer    
+    reviewer_id: 
+      type: integer    
   relations:
-    Member:
-      local: collector_id
-      foreign: id
-      foreignAlias: CollectedOrganizations
-    Member:
+    Reviewer:
+      class: Member
+      onDelete: CASCADE
       local: reviewer_id
       foreign: id
       foreignAlias: ReviewedOrganizations
-
+    Collector:
+      class: Member
+      onDelete: CASCADE
+      local: collector_id
+      foreign: id
+      foreignAlias: CollectedOrganizations
+ 
 Grantx:
   actAs:
     Timestampable: ~
@@ -52,23 +57,34 @@ Grantx:
       notnull: true
     attachment: blob
     comment: clob
-    collector_id: integer
-    reviewer_id: integer
-    organization_id: integer
+    organization_id:
+      type: integer
+      notnull: true
+    collector_id:
+      type: integer
+      notnull: true
+    reviewer_id: 
+      type: integer    
   relations:
+    Reviewer:
+      class: Member
+      onDelete: CASCADE
+      local: reviewer_id
+      foreign: id
+      foreignAlias: ReviewedGrantxs
+    Collector:
+      class: Member
+      onDelete: CASCADE
+      local: collector_id
+      foreign: id
+      foreignAlias: CollectedGrantxs
+    
     Organization:
+      onDelete: CASCADE
       local: organization_id
       foreign: id
       foreignAlias: Grants
-    Member:
-      local: collector_id
-      foreign: id
-      foreignAlias: CollectedGrantEvents
-    Member:
-      local: reviewer_id
-      foreign: id
-      foreignAlias: ReviewedGrantEvents
-
+ 
 AssetRecord:
   columns:
     year: integer
@@ -87,6 +103,7 @@ GivingRecord:
     organization_id: integer
   relations:
     Organization:
+      onDelete: CASCADE
       local: organization_id
       foreign: id
       foreignAlias: GivingRecords
@@ -103,6 +120,7 @@ ContactPerson:
     organization_id: integer
   relations:
     Organization:
+      onDelete: CASCADE
       local: organization_id
       foreign: id
       foreignAlias: ContactPersons

@@ -28,16 +28,16 @@ Member:
 
 Organization:
   org_bjduck:
-    engName: 'Beijing Duck'
-    chnName: '北京烤鸭'
+    eng_name: 'Beijing Duck'
+    chn_name: '北京烤鸭'
     website: 'www.bjduck.com'
     comment: 'delicious!'
     status: 'To be reviewed'
     collector_id: 1
     reviewer_id: 2    
   org_tjbaozi:
-    engName: 'Tianjin Baozi'
-    chnName: '天津包子'
+    eng_name: 'Tianjin Baozi'
+    chn_name: '天津包子'
     website: 'www.tjbaozi.com'
     comment: 'tasty!'
     status: 'Reviewed!'

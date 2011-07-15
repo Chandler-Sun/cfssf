@@ -8,16 +8,22 @@
  * @property string $name
  * @property string $email
  * @property Doctrine_Collection $ReviewedOrganizations
- * @property Doctrine_Collection $ReviewedGrantEvents
+ * @property Doctrine_Collection $CollectedOrganizations
+ * @property Doctrine_Collection $ReviewedGrantxs
+ * @property Doctrine_Collection $CollectedGrantxs
  * 
- * @method string              getName()                  Returns the current record's "name" value
- * @method string              getEmail()                 Returns the current record's "email" value
- * @method Doctrine_Collection getReviewedOrganizations() Returns the current record's "ReviewedOrganizations" collection
- * @method Doctrine_Collection getReviewedGrantEvents()   Returns the current record's "ReviewedGrantEvents" collection
- * @method Member              setName()                  Sets the current record's "name" value
- * @method Member              setEmail()                 Sets the current record's "email" value
- * @method Member              setReviewedOrganizations() Sets the current record's "ReviewedOrganizations" collection
- * @method Member              setReviewedGrantEvents()   Sets the current record's "ReviewedGrantEvents" collection
+ * @method string              getName()                   Returns the current record's "name" value
+ * @method string              getEmail()                  Returns the current record's "email" value
+ * @method Doctrine_Collection getReviewedOrganizations()  Returns the current record's "ReviewedOrganizations" collection
+ * @method Doctrine_Collection getCollectedOrganizations() Returns the current record's "CollectedOrganizations" collection
+ * @method Doctrine_Collection getReviewedGrantxs()        Returns the current record's "ReviewedGrantxs" collection
+ * @method Doctrine_Collection getCollectedGrantxs()       Returns the current record's "CollectedGrantxs" collection
+ * @method Member              setName()                   Sets the current record's "name" value
+ * @method Member              setEmail()                  Sets the current record's "email" value
+ * @method Member              setReviewedOrganizations()  Sets the current record's "ReviewedOrganizations" collection
+ * @method Member              setCollectedOrganizations() Sets the current record's "CollectedOrganizations" collection
+ * @method Member              setReviewedGrantxs()        Sets the current record's "ReviewedGrantxs" collection
+ * @method Member              setCollectedGrantxs()       Sets the current record's "CollectedGrantxs" collection
  * 
  * @package    cfssf
  * @subpackage model
@@ -46,8 +52,16 @@ abstract class BaseMember extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'reviewer_id'));
 
-        $this->hasMany('Grantx as ReviewedGrantEvents', array(
+        $this->hasMany('Organization as CollectedOrganizations', array(
+             'local' => 'id',
+             'foreign' => 'collector_id'));
+
+        $this->hasMany('Grantx as ReviewedGrantxs', array(
              'local' => 'id',
              'foreign' => 'reviewer_id'));
+
+        $this->hasMany('Grantx as CollectedGrantxs', array(
+             'local' => 'id',
+             'foreign' => 'collector_id'));
     }
 }
